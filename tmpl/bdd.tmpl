@@ -1,0 +1,16 @@
+(function(global) {
+  "use strict";
+  // <%= classInfo.description || "説明なし" %>
+  describe("<%= classInfo.name %>", function() {
+<% _.each(_.keys(methodInfo).sort(), function(methodName) { %>
+    /**
+<%= (methodInfo[methodName].description.split(/\n/).map(function(n) { return "     * " + n.replace(/^\s*\*\s*/, "")}).join("\n") || "説明なし") %><% if (0 < methodInfo[methodName].args.length) { %><%= "\n" %><%_.each(methodInfo[methodName].args, function(arg, i) { %>     * @param <%= arg  %><%= (i < methodInfo[methodName].args.length - 1) ? "\n" : "" %><% });} %>
+     */
+    describe("<%= methodName %>", function() {
+      it("should return xxxx", function(done) {
+        // assert(xxxx, "comment");
+      });
+    });
+<% }); %>
+  });
+})((this || 0).self || global);
