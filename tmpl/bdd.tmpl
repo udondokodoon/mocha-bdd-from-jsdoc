@@ -4,7 +4,7 @@
   describe("<%= classInfo.name %>", function() {
 <% _.each(_.keys(methodInfo).sort(), function(methodName) { %>
     /**
-<%= (methodInfo[methodName].description.split(/\n/).map(function(n) { return "     * " + n.replace(/^\s*\*\s*/, "")}).join("\n") || "説明なし") %><% if (0 < methodInfo[methodName].args.length) { %><%= "\n" %><%_.each(methodInfo[methodName].args, function(arg, i) { %>     * @param <%= arg  %><%= (i < methodInfo[methodName].args.length - 1) ? "\n" : "" %><% });} %>
+<%= (methodInfo[methodName].description.split(/\n/).map(function(n) { return "     * " + n.replace(/^\s*\*\s*/, "")}).join("\n") || "説明なし") %><% if (0 < methodInfo[methodName].args.length) { %><%= "\n" %><%_.each(methodInfo[methodName].args, function(arg, i) { %>     * @param <%= arg  %><%= (i < methodInfo[methodName].args.length - 1) ? "\n" : "" %><% });} %><% if (methodInfo[methodName].returnType) { %><%= "\n" %>     * @return <%= methodInfo[methodName].returnType %><% } %>
      */
     describe("<%= methodName %>", function() {
       it("should return xxxx", function(done) {

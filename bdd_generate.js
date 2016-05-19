@@ -41,10 +41,17 @@ _.each(ast.comments, function(e) {
   var info = {
     description: doc.description,
     name: method.name,
-    args: []
+    args: [],
+    returns: undefined
   };
-  _.each(_.filter(doc.tags, function(n) { return n.title === "param"}), function(n) {
-    info.args.push("{" + n.type.name + "} " + n.name + (n.description ? " -- " + n.description : ""));
+  _.each(doc.tags, function(n) {
+    if (n.title === "param") {
+      info.args.push("{" + n.type.name + "} " + n.name + (n.description ? " -- " + n.description.replace(/\s*--\s*/, "") : ""));
+    }
+    if (-1 < n.title.indexOf("return")) {
+      console.log(JSON.stringify(n, null, "  "));
+      info.returnType = n.type.name;
+    }
   });
   methodInfo[method.name] = info;
 });
