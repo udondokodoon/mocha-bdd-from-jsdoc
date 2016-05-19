@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var fs = require("fs");
 var esprima = require("esprima");
 var estraverse = require("estraverse");
