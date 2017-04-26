@@ -12,7 +12,8 @@
     "doctrine": "^1.2.1",
     "escodegen": "^1.8.0",
     "esprima": "^2.7.2",
-    "estraverse": "^4.2.0"
+    "estraverse": "^4.2.0",
+    "lodash": "^4.17.4"
   },
   "bin": {
     "bdd_generate": "./bdd_generate.js"
