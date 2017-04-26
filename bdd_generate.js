@@ -49,7 +49,7 @@ _.each(ast.comments, function(e) {
       info.args.push("{" + n.type.name + "} " + n.name + (n.description ? " -- " + n.description.replace(/\s*--\s*/, "") : ""));
     }
     if (-1 < n.title.indexOf("return")) {
-      console.log(JSON.stringify(n, null, "  "));
+      //console.log(JSON.stringify(n, null, "  "));
       info.returnType = n.type.name;
     }
   });
